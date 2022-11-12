@@ -6,9 +6,6 @@ var imgData = await fetch(url).then(r => r.buffer()).then(buf => `data:image/${t
 
 const response = await fetch('http://127.0.0.1:1235/persons',
     {method: 'POST', body: JSON.stringify({
-        "actions": [
-          "race"
-        ],
         "img": [
           imgData
         ]
