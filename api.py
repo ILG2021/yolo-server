@@ -37,6 +37,7 @@ def analyze():
     return jsonify(results)
 
 if __name__ == "__main__":
+    print("人物检测v1.0")
     parser = argparse.ArgumentParser(description="Flask API exposing YOLOv5 model")
     parser.add_argument("--port", default=1235, type=int, help="port number")
     parser.add_argument('--model', nargs='+', default=['yolov5s'], help='model(s) to run, i.e. --model yolov5n yolov5s')
