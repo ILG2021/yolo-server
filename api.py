@@ -29,7 +29,7 @@ def analyze():
         for instance in instances:
             encoded_data = instance.split(',')[1]
             im = Image.open(io.BytesIO(base64.b64decode(encoded_data)))
-            ai_results = models['yolov5s'](im, size=320)  # reduce size=320 for faster inference
+            ai_results = models['yolov5s'](im, size=120)  # reduce size=320 for faster inference
             input_dict = json.loads(ai_results.pandas().xyxy[0].to_json(orient="records"))
             output_dict = [x for x in input_dict if x['name'] == 'person']
             results.append(len(output_dict))
