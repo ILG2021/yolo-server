@@ -1,0 +1,1 @@
+pyinstaller --noconfirm --onedir --console --icon "./yolo.png" --add-data "./venv/Lib/site-packages/cv2;cv2/" --add-data "./venv/Lib/site-packages/yaml;yaml/" --hidden-import "PIL.ExifTags" --add-data "./venv/Lib/site-packages/seaborn;seaborn/"  "./yolov5.py"
