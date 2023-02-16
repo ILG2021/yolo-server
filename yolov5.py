@@ -20,7 +20,7 @@ def index():
 
 
 @app.route('/persons', methods=["POST"])
-def analyze():
+def persons():
     if request.method != "POST":
         return
     instances = request.get_json()['img']
@@ -36,8 +36,23 @@ def analyze():
             print(len(output_dict))
     return jsonify(results)
 
+@app.route('/objects', methods=["POST"])
+def objects():
+    if request.method != "POST":
+        return
+    instances = request.get_json()['img']
+    results = []
+    if instances and len(instances) > 0:
+        for instance in instances:
+            encoded_data = instance.split(',')[1]
+            im = Image.open(io.BytesIO(base64.b64decode(encoded_data)))
+            ai_results = models['yolov5s'](im, size=320)  # reduce size=320 for faster inference
+            input_dict = json.loads(ai_results.pandas().xyxy[0].to_json(orient="records"))
+            results.append(input_dict)
+    return json.dumps(results)
+
 if __name__ == "__main__":
-    print("人物检测v1.0")
+    print("对象检测v1.0")
     parser = argparse.ArgumentParser(description="Flask API exposing YOLOv5 model")
     parser.add_argument("--port", default=1235, type=int, help="port number")
     parser.add_argument('--model', nargs='+', default=['yolov5s'], help='model(s) to run, i.e. --model yolov5n yolov5s')
