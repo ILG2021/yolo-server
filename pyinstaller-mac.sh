@@ -1,0 +1,1 @@
+pyinstaller --noconfirm --onedir --console --icon "./yolo.png" --add-data "./venv/Lib/site-packages/yolov7;yolov7/"  "./yolo.py"
