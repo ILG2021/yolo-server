@@ -1,1 +1,1 @@
-pyinstaller --noconfirm --onedir --console --icon "./yolo.png" --add-data "./venv/Lib/site-packages/yolov7;yolov7/"  "./yolo.py"
+pyinstaller --noconfirm --onedir --console --icon './yolo.ico' --add-data /Users/macos/Desktop/yolo-server/venv/lib/python3.8/site-packages/yolov7:yolov7  "/Users/macos/Desktop/yolo-server/yolo.py"
